@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/10/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). All rights reserved.
+//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "RestaurantFetcher.h"
@@ -11,7 +11,6 @@
 #import "Restaurant.h"
 #import "NSObject+YAJL.h"
 
-#define kRestaurantsURL @"http://api.lvh.me:2999/accounts/4cdb9a5d425071ba8d00002f/collections/restaurants/resources?per_page=100"
 
 @implementation RestaurantFetcher
 
@@ -59,13 +58,13 @@
     [connection release];
   }
   
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kRestaurantsURL]];
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:StorageRoomURL(@"/collections/restaurants/resources?per_page=100")]];
   NSMutableDictionary *headers = [NSMutableDictionary dictionary];
   [headers setObject:@"StorageRoomExample iPhone" forKey:@"User-Agent"];	
   [headers setObject:@"application/json" forKey:@"Accept"];
   [headers setObject:@"application/json" forKey:@"Content-Type"];
   
-  [request setAllHTTPHeaderFields: headers];
+  [request setAllHTTPHeaderFields:headers];
   
   responseData = [[NSMutableData alloc] init];
   connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -150,7 +149,7 @@
   if (challenge.previousFailureCount == 0) {
     NSLog(@"Received authentication challenge");
     
-    NSURLCredential *newCredential =[NSURLCredential credentialWithUser:@"w7EiqaPfh3liZXrJu8Qp" password:@"X" persistence:NSURLCredentialPersistenceForSession];
+    NSURLCredential *newCredential =[NSURLCredential credentialWithUser:StorageRoomAPIKey password:@"X" persistence:NSURLCredentialPersistenceForSession];
     
     [challenge.sender useCredential:newCredential forAuthenticationChallenge:challenge];    
   }

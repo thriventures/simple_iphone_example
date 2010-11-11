@@ -1,0 +1,8 @@
+build
+*.pbxuser
+*.mode?v3
+*.perspective
+*.perspectivev3
+*.swp
+*.ipa
+.DS_Store

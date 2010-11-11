@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/8/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). All rights reserved.
+//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import <MapKit/MapKit.h>
@@ -19,7 +19,7 @@ typedef enum {
 @class RestaurantDetailViewController;
 @class Restaurant;
 @class RestaurantFetcher;
-
+@class AnnouncementFetcher;
 
 @interface RestaurantsViewController : BaseController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate> {
   RestaurantDetailViewController *detailViewController;
@@ -29,7 +29,13 @@ typedef enum {
   MKMapView *mapView;
   MBProgressHUD *hudView;
   UISegmentedControl *segmentedControl;
+  UIView *announcementView;
+  UIButton *announcementButton;
+  UILabel *announcementLabel;
+  
+  
   RestaurantFetcher *restaurantFetcher;
+  AnnouncementFetcher *announcementFetcher;
 }
 
 @property (nonatomic, retain) IBOutlet RestaurantDetailViewController *detailViewController;
@@ -39,11 +45,19 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) MBProgressHUD *hudView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
-@property (nonatomic, retain) IBOutlet RestaurantFetcher *restaurantFetcher;
+@property (nonatomic, retain) IBOutlet UIView *announcementView;
+@property (nonatomic, retain) IBOutlet UIButton *announcementButton;
+@property (nonatomic, retain) IBOutlet UILabel *announcementLabel;
+
+
+@property (nonatomic, retain) RestaurantFetcher *restaurantFetcher;
+@property (nonatomic, retain) AnnouncementFetcher *announcementFetcher;
 
 
 - (IBAction)segmentedControlChanged;
 - (IBAction)loadButtonTapped;
+- (IBAction)hideAnnouncement;
+- (IBAction)openAnnouncement;
 
 - (void)reloadRestaurants;
 - (void)openDetailViewForRestaurant:(Restaurant *)aRestaurant;

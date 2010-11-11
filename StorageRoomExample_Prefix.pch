@@ -8,4 +8,6 @@
     #import <CoreData/CoreData.h>
 
     #import "MBProgressHUD.h"
+    #import "StorageRoom.h"
+
 #endif

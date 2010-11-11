@@ -3,12 +3,13 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/8/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). All rights reserved.
+//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "ReadmeViewController.h"
 
-#define kAboutURL @"https://github.com/thriventures/storage_room_iphone_examples/blob/master/README.rdoc"
+#define kAboutURLRaw @"https://github.com/thriventures/storage_room_iphone_examples/raw/master/README.rdoc"
+#define kAboutURLHTML @"https://github.com/thriventures/storage_room_iphone_examples"
 
 @implementation ReadmeViewController
 
@@ -29,7 +30,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  NSURL *url = [NSURL URLWithString:kAboutURL];
+  NSURL *url = [NSURL URLWithString:kAboutURLRaw];
   [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
@@ -37,6 +38,13 @@
   self.webView = nil;
   
   [super viewDidUnload];
+}
+
+#pragma mark -
+#pragma mark IBActions
+
+- (IBAction)safariButtonTapped {
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kAboutURLHTML]];  
 }
 
 @end

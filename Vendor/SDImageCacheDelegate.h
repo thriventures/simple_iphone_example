@@ -3,7 +3,7 @@
 //  Dailymotion
 //
 //  Created by Olivier Poitrey on 16/09/10.
-//  Copyright 2010 Dailymotion. All rights reserved.
+//  Copyright 2010 Dailymotion. See LICENSE for details.
 //
 
 #import <UIKit/UIKit.h>

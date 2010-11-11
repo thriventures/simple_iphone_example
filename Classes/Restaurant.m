@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/10/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). All rights reserved.
+//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "Restaurant.h"
@@ -27,23 +27,23 @@
 @dynamic previewImageURL;
 
 - (void)setWithJSONDictionary:(NSDictionary *)aDictionary {
-  self.name = [aDictionary objectForKey:@"name"];
-  self.text = [aDictionary objectForKey:@"text"];
-  self.openingTimes = [aDictionary objectForKey:@"opening_times"];
+  self.name = NilOrValue([aDictionary objectForKey:@"name"]);
+  self.text = NilOrValue([aDictionary objectForKey:@"text"]);
+  self.openingTimes = NilOrValue([aDictionary objectForKey:@"opening_times"]);
   
-  self.priceRange = [aDictionary objectForKey:@"price_range"];
-  self.stars = [aDictionary objectForKey:@"stars"];
-  self.vegetarianMenu = [aDictionary objectForKey:@"vegetarian_menu"];
+  self.priceRange = NilOrValue([aDictionary objectForKey:@"price_range"]);
+  self.stars = NilOrValue([aDictionary objectForKey:@"stars"]);
+  self.vegetarianMenu = NilOrValue([aDictionary objectForKey:@"vegetarian_menu"]);
   
   NSDictionary *location = [aDictionary objectForKey:@"location"];
-  self.latitude = [location objectForKey:@"lat"];
-  self.longitude = [location objectForKey:@"lng"];
+  self.latitude = NilOrValue([location objectForKey:@"lat"]);
+  self.longitude = NilOrValue([location objectForKey:@"lng"]);
   
   NSDictionary *image = [aDictionary objectForKey:@"image"];
-  self.imageURL = [image objectForKey:@"url"];
+  self.imageURL = NilOrValue([image objectForKey:@"url"]);
   
   NSDictionary *previewImage = [aDictionary objectForKey:@"preview_image"];
-  self.previewImageURL = [previewImage objectForKey:@"url"];
+  self.previewImageURL = NilOrValue([previewImage objectForKey:@"url"]);
   
   ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
   

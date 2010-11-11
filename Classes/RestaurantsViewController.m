@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/8/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). All rights reserved.
+//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "RestaurantsViewController.h"
@@ -16,14 +16,17 @@
 #import "RestaurantFetcher.h"
 #import "RestaurantAnnotation.h"
 
+#import "Announcement.h"
+#import "AnnouncementFetcher.h"
+
 #import "UIImageView+WebCache.h"
 
 
 @implementation RestaurantsViewController
 
 @synthesize detailViewController, fetchedResultsController;
-@synthesize tableView, mapView, hudView, segmentedControl;
-@synthesize restaurantFetcher;
+@synthesize tableView, mapView, hudView, segmentedControl, announcementView, announcementButton, announcementLabel;
+@synthesize restaurantFetcher, announcementFetcher;
 
 
 #pragma mark -
@@ -47,6 +50,10 @@
   self.restaurantFetcher = [[[RestaurantFetcher alloc] initWithManagedObjectContext:[self applicationDelegate].managedObjectContext] autorelease];
   restaurantFetcher.delegate = self;
   
+  self.announcementFetcher = [[[AnnouncementFetcher alloc] init] autorelease];
+  announcementFetcher.delegate = self;
+  
+  [announcementFetcher downloadAnnouncements];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,8 +70,12 @@
   self.mapView = nil;
   self.hudView = nil;
   self.segmentedControl = nil;
+  self.announcementView = nil;
+  self.announcementButton = nil;
+  self.announcementLabel = nil;
   
   self.restaurantFetcher = nil;
+  self.announcementFetcher = nil;
   
   [super viewDidUnload];
 }
@@ -134,6 +145,18 @@
     
   // Download the restaurants. Of course this could also be triggered automatically.
   [self.restaurantFetcher downloadRestaurants];
+}
+
+- (IBAction)hideAnnouncement {
+  self.announcementView.hidden = YES;
+}
+
+- (IBAction)openAnnouncement {
+  Announcement *announcement = (Announcement *)[self.announcementFetcher.announcements objectAtIndex:0];
+  
+  if (announcement.url) {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:announcement.url]]; 
+  }
 }
 
 #pragma mark -
@@ -242,6 +265,25 @@
   [self.hudView hide:YES];
   [self showAlertWithMessage:@"Could not download Restaurants"];
 }
+
+#pragma mark -
+#pragma mark AnnouncementFetcher Delegate Methods
+
+- (void)announcementFetcherDidStartDownload:(AnnouncementFetcher *)anAnnouncementFetcher {
+  NSLog(@"Loading announcement");
+}
+
+- (void)announcementFetcherDidFinishDownload:(AnnouncementFetcher *)anAnnouncementFetcher withAnnouncements:(NSArray *)anArray {
+  Announcement *announcement = [anArray objectAtIndex:0];
+  
+  self.announcementView.hidden = NO;
+  self.announcementLabel.text = announcement.text;
+}
+
+- (void)announcementFetcher:(AnnouncementFetcher *)anAnnouncementFetcher didFailWithError:(NSError *)anError {
+  NSLog(@"Error while loading announcements");
+}
+
 
 
 

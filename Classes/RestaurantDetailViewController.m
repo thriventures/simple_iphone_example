@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/8/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). All rights reserved.
+//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "RestaurantDetailViewController.h"

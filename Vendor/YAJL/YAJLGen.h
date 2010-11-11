@@ -3,7 +3,7 @@
 //  YAJL
 //
 //  Created by Gabriel Handford on 7/19/09.
-//  Copyright 2009. All rights reserved.
+//  Copyright 2009. See LICENSE for details.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation

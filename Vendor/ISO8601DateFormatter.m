@@ -1,7 +1,7 @@
 /*ISO8601DateFormatter.m
  *
  *Created by Peter Hosey on 2009-04-11.
- *Copyright 2009 Peter Hosey. All rights reserved.
+ *Copyright 2009 Peter Hosey. See LICENSE for details.
  */
 
 #import <Foundation/Foundation.h>
