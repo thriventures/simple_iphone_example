@@ -1,0 +1,28 @@
+//
+//  BaseController.m
+//  StorageRoomExample
+//
+//  Created by Sascha Konietzke on 11/11/10.
+//  Copyright 2010 Thriventures UG (haftungsbeschränkt). All rights reserved.
+//
+
+#import "BaseController.h"
+
+#import "StorageRoomExampleAppDelegate.h"
+
+@implementation BaseController
+
+- (StorageRoomExampleAppDelegate *)applicationDelegate {
+  return (StorageRoomExampleAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
+- (void)showAlertWithMessage:(NSString *)aMessage {
+  UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:nil
+                                                   message:aMessage
+                                                  delegate:nil 
+                                         cancelButtonTitle:nil 
+                                         otherButtonTitles:@"OK", nil] autorelease];
+  [alert show];	
+}
+
+@end

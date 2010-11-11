@@ -1,0 +1,30 @@
+== StorageRoom iPhone Examples
+
+This is an iPhone example on how to use the StorageRoom API (http://storageroomapp.com).
+
+
+== Basics
+
+Restaurants are loaded from the CMS, saved locally with Core Data and displayed in a UITableView and a MKMapView. Details can be seen on a secondary page. 
+The restaurants are cached for offline use until the user manually decides to load the items again from the web.
+
+This example is kept kept simple on purpose and focuses on the downloading and parsing of the JSON data.
+
+
+== TODO
+
+Please refer to TODO file.
+
+== Maintainers
+
+* Sascha Konietzke 
+
+== Bugs and Feedback
+
+If you discover any bugs, please create an issue on GitHub.
+
+http://github.com/thriventures/storage_room_iphone_examples/issues
+
+== License
+
+MIT License. Copyright 2010 Thriventures UG (haftungsbeschränkt) - http://www.thriventures.com

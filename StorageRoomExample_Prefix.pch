@@ -1,0 +1,11 @@
+//
+// Prefix header for all source files of the 'StorageRoomExample' target in the 'StorageRoomExample' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+    #import <CoreData/CoreData.h>
+
+    #import "MBProgressHUD.h"
+#endif
