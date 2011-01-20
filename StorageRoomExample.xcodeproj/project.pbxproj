@@ -36,7 +36,6 @@
 		53CED315128AAB8D00AA5401 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CED314128AAB8D00AA5401 /* Restaurant.m */; };
 		53CED32B128AABF900AA5401 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53CED32A128AABF900AA5401 /* CoreData.framework */; };
 		53CED334128AAC1400AA5401 /* Announcement.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CED333128AAC1400AA5401 /* Announcement.m */; };
-		53CED382128AB2CF00AA5401 /* RestaurantAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CED381128AB2CF00AA5401 /* RestaurantAnnotation.m */; };
 		53CED3B0128AB69800AA5401 /* RestaurantFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CED3AF128AB69800AA5401 /* RestaurantFetcher.m */; };
 		53CED3E2128AB7F600AA5401 /* libYAJLIPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53CED3D9128AB7F600AA5401 /* libYAJLIPhone.a */; };
 /* End PBXBuildFile section */
@@ -93,8 +92,6 @@
 		53CED32A128AABF900AA5401 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		53CED332128AAC1400AA5401 /* Announcement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Announcement.h; sourceTree = "<group>"; };
 		53CED333128AAC1400AA5401 /* Announcement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Announcement.m; sourceTree = "<group>"; };
-		53CED380128AB2CF00AA5401 /* RestaurantAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantAnnotation.h; sourceTree = "<group>"; };
-		53CED381128AB2CF00AA5401 /* RestaurantAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantAnnotation.m; sourceTree = "<group>"; };
 		53CED3AE128AB69800AA5401 /* RestaurantFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantFetcher.h; sourceTree = "<group>"; };
 		53CED3AF128AB69800AA5401 /* RestaurantFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantFetcher.m; sourceTree = "<group>"; };
 		53CED3D9128AB7F600AA5401 /* libYAJLIPhone.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYAJLIPhone.a; sourceTree = "<group>"; };
@@ -279,8 +276,6 @@
 				5328F7DA128C3215004B22B1 /* AnnouncementFetcher.m */,
 				53CED313128AAB8D00AA5401 /* Restaurant.h */,
 				53CED314128AAB8D00AA5401 /* Restaurant.m */,
-				53CED380128AB2CF00AA5401 /* RestaurantAnnotation.h */,
-				53CED381128AB2CF00AA5401 /* RestaurantAnnotation.m */,
 				53CED3AE128AB69800AA5401 /* RestaurantFetcher.h */,
 				53CED3AF128AB69800AA5401 /* RestaurantFetcher.m */,
 			);
@@ -376,7 +371,6 @@
 				53CED30B128AA9EB00AA5401 /* Base.xcdatamodel in Sources */,
 				53CED315128AAB8D00AA5401 /* Restaurant.m in Sources */,
 				53CED334128AAC1400AA5401 /* Announcement.m in Sources */,
-				53CED382128AB2CF00AA5401 /* RestaurantAnnotation.m in Sources */,
 				53CED3B0128AB69800AA5401 /* RestaurantFetcher.m in Sources */,
 				5328F5B5128BDF07004B22B1 /* ISO8601DateFormatter.m in Sources */,
 				5328F5C6128BE0A3004B22B1 /* BaseController.m in Sources */,

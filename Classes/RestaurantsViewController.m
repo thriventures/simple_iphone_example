@@ -14,7 +14,6 @@
 
 #import "Restaurant.h"
 #import "RestaurantFetcher.h"
-#import "RestaurantAnnotation.h"
 
 #import "Announcement.h"
 #import "AnnouncementFetcher.h"
@@ -54,12 +53,8 @@
   announcementFetcher.delegate = self;
   
   [announcementFetcher downloadAnnouncements];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
   
-  [self reloadRestaurants];
+  [self loadRestaurants];
 }
 
 - (void)viewDidUnload {    
@@ -83,7 +78,7 @@
 #pragma mark -
 #pragma mark Helpers
 
-- (void)reloadRestaurants {  
+- (void)loadRestaurants {  
   NSManagedObjectContext *context = [self applicationDelegate].managedObjectContext;
   NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
   fetchRequest.entity = [NSEntityDescription entityForName:@"Restaurant" inManagedObjectContext:context];
@@ -93,6 +88,7 @@
   
   [NSFetchedResultsController deleteCacheWithName:@"restaurants"];
   self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:@"restaurants"] autorelease];  
+  fetchedResultsController.delegate = self;
   
   NSError *error = nil;
   
@@ -100,19 +96,9 @@
     [self showAlertWithMessage:@"Could not load Restaurants"];
   }
   
-  [self.tableView reloadData];
-  
-  [self.mapView removeAnnotations:self.mapView.annotations];
-  
   NSArray *restaurants = fetchedResultsController.fetchedObjects;
   
-  for(Restaurant *restaurant in restaurants) {
-    RestaurantAnnotation *annotation = [[RestaurantAnnotation alloc] initWithRestaurant:restaurant];
-    
-    [self.mapView addAnnotation:annotation];
-    
-    [annotation release];
-  }
+  [self.mapView addAnnotations:restaurants];
 }
 
 - (void)openDetailViewForRestaurant:(Restaurant *)aRestaurant {
@@ -224,7 +210,7 @@
 	if (annotation == self.mapView.userLocation) {
 		return nil;
 	}
-	else if([annotation isKindOfClass:[RestaurantAnnotation class]])	{    
+	else if([annotation isKindOfClass:[Restaurant class]])	{    
 		MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:annotationViewIdentifier];
 		
 		if(!annotationView) {
@@ -242,8 +228,7 @@
 }
 
 - (void)mapView:(MKMapView *)aMapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-  RestaurantAnnotation *annotation = (RestaurantAnnotation *)view.annotation; 
-  Restaurant *restaurant = annotation.restaurant;
+  Restaurant *restaurant = (Restaurant *)view.annotation; 
   
   [self openDetailViewForRestaurant:restaurant];
 }
@@ -258,7 +243,6 @@
 
 - (void)restaurantFetcherDidFinishDownload:(RestaurantFetcher *)aRestaurantFetcher {
   [self.hudView hide:YES];  
-  [self reloadRestaurants];
 }
 
 - (void)restaurantFetcher:(RestaurantFetcher *)aRestaurantFetcher didFailWithError:(NSError *)anError {
@@ -282,6 +266,53 @@
 
 - (void)announcementFetcher:(AnnouncementFetcher *)anAnnouncementFetcher didFailWithError:(NSError *)anError {
   NSLog(@"Error while loading announcements");
+}
+
+#pragma mark -
+#pragma mark NSFetchedResultsController Delegate Methods
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {  
+  [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+  switch(type) {
+    case NSFetchedResultsChangeInsert:
+      [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+      break;
+      
+    case NSFetchedResultsChangeDelete:
+      [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+      break;
+  }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {  
+  Restaurant *restaurant = (Restaurant *)anObject;
+  
+  switch(type) {
+      
+    case NSFetchedResultsChangeInsert:
+      [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+      
+      [self.mapView addAnnotation:restaurant];
+      
+      break;
+      
+    case NSFetchedResultsChangeDelete:
+      [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+      
+      [self.mapView removeAnnotation:restaurant];
+      
+      break;
+  }  
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {  
+  [self.tableView endUpdates];
 }
 
 

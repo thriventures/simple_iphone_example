@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 #import <MapKit/MapKit.h>
 
-@interface Restaurant :  NSManagedObject {
+@interface Restaurant :  NSManagedObject <MKAnnotation> {
   
 }
 

@@ -62,6 +62,16 @@
   [formatter release];
 }
 
+#pragma mark -
+#pragma mark MKAnnotation Protocol
+
+- (NSString *)title {
+  return self.name;
+}
+
+- (NSString *)subtitle {
+  return nil;
+}
 
 - (CLLocationCoordinate2D)coordinate {
   CLLocationCoordinate2D center;

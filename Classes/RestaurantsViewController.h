@@ -21,7 +21,7 @@ typedef enum {
 @class RestaurantFetcher;
 @class AnnouncementFetcher;
 
-@interface RestaurantsViewController : BaseController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate> {
+@interface RestaurantsViewController : BaseController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, NSFetchedResultsControllerDelegate> {
   RestaurantDetailViewController *detailViewController;
   NSFetchedResultsController *fetchedResultsController;
   
@@ -58,7 +58,7 @@ typedef enum {
 - (IBAction)hideAnnouncement;
 - (IBAction)openAnnouncement;
 
-- (void)reloadRestaurants;
+- (void)loadRestaurants;
 - (void)openDetailViewForRestaurant:(Restaurant *)aRestaurant;
 
 
