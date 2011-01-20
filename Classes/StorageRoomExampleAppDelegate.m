@@ -19,9 +19,9 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-  [tabBarController release];
-  [window release];
-  
+  self.tabBarController = nil;
+  self.window = nil;
+
   [managedObjectContext release];
   [managedObjectModel release];
   [persistentStoreCoordinator release];

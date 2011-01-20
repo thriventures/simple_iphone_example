@@ -10,9 +10,14 @@
 
 
 
-NSString * const StorageRoomAccountId = @"4cdb9a5d425071ba8d00002f";
-NSString * const StorageRoomAPIKey = @"w7EiqaPfh3liZXrJu8Qp";
-NSString * const StorageRoomHost = @"api.lvh.me:2999"; // TODO: update
+NSString * const StorageRoomAccountId = @"4d13574cba05613d25000004";
+NSString * const StorageRoomAPIKey = @"DZHpRbsJ7VgFXhybKWmT";
+NSString * const StorageRoomHost = @"api.storageroomapp.com"; 
+
+// Uncomment for local testing
+//NSString * const StorageRoomAccountId = @"4cef9a8c425071fa6900002f";
+//NSString * const StorageRoomAPIKey = @"c499kx9L6aBfvJlvSKbF";
+//NSString * const StorageRoomHost = @"api.lvh.me:3000"; 
 
 NSString *StorageRoomURL(NSString *path) {
   return [NSString stringWithFormat:@"http://%@/accounts/%@%@", StorageRoomHost, StorageRoomAccountId, path];

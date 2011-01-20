@@ -18,8 +18,11 @@
   self.text = NilOrValue([aDictionary objectForKey:@"text"]);
   self.url = NilOrValue([aDictionary objectForKey:@"url"]);
     
-//  NSDictionary *image = [aDictionary objectForKey:@"image"];
-//  self.imageURL = [image objectForKey:@"url"];
+  NSDictionary *image = [aDictionary objectForKey:@"image"];
+  
+  if (NilOrValue(image)) {
+    self.imageURL = [image objectForKey:@"url"];
+  }
     
   ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
   

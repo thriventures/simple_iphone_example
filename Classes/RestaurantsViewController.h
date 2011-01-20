@@ -33,7 +33,6 @@ typedef enum {
   UIButton *announcementButton;
   UILabel *announcementLabel;
   
-  
   RestaurantFetcher *restaurantFetcher;
   AnnouncementFetcher *announcementFetcher;
 }

@@ -11,4 +11,5 @@ extern NSString * const StorageRoomAPIKey;
 extern NSString * const StorageRoomHost;
 
 NSString *StorageRoomURL(NSString *path);
+
 id NilOrValue(id aValue);

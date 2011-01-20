@@ -275,14 +275,14 @@
 			children = (
 				53CED332128AAC1400AA5401 /* Announcement.h */,
 				53CED333128AAC1400AA5401 /* Announcement.m */,
+				5328F7D9128C3215004B22B1 /* AnnouncementFetcher.h */,
+				5328F7DA128C3215004B22B1 /* AnnouncementFetcher.m */,
 				53CED313128AAB8D00AA5401 /* Restaurant.h */,
 				53CED314128AAB8D00AA5401 /* Restaurant.m */,
 				53CED380128AB2CF00AA5401 /* RestaurantAnnotation.h */,
 				53CED381128AB2CF00AA5401 /* RestaurantAnnotation.m */,
 				53CED3AE128AB69800AA5401 /* RestaurantFetcher.h */,
 				53CED3AF128AB69800AA5401 /* RestaurantFetcher.m */,
-				5328F7D9128C3215004B22B1 /* AnnouncementFetcher.h */,
-				5328F7DA128C3215004B22B1 /* AnnouncementFetcher.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -414,6 +414,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = StorageRoomExample;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};

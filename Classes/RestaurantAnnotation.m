@@ -14,16 +14,11 @@
 
 @synthesize restaurant;
 
-- (id)init {
-	if(self = [super init]) {
-		restaurant = nil;
-	}
-	
-	return self;
-}
+#pragma mark -
+#pragma mark NSObject
 
 - (id)initWithRestaurant:(Restaurant *)aRestaurant {
-  if(self = [self init]) {
+  if(self = [super init]) {
     self.restaurant = aRestaurant;
   }
   
@@ -35,6 +30,9 @@
 	
 	[super dealloc];
 }
+
+#pragma mark -
+#pragma mark MKAnnotation Protocol
 
 - (NSString *)title {
   return restaurant.name;

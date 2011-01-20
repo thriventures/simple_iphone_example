@@ -54,7 +54,7 @@
     [connection release];
   }
   
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:StorageRoomURL(@"/collections/announcements/resources?per_page=1&sort=created_at&order=desc")]];
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:StorageRoomURL(@"/collections/announcements/entries?per_page=1&sort=created_at&order=desc")]];
   NSMutableDictionary *headers = [NSMutableDictionary dictionary];
   [headers setObject:@"StorageRoomExample iPhone" forKey:@"User-Agent"];	
   [headers setObject:@"application/json" forKey:@"Accept"];
@@ -96,8 +96,8 @@
   
   @try {
     NSDictionary *json = [content yajl_JSON];
-    NSDictionary *resources = (NSDictionary *)[json objectForKey:@"resources"];
-    NSArray *arrayOfAnnouncementDictionaries = (NSArray *)[resources objectForKey:@"items"];
+    NSDictionary *resources = (NSDictionary *)[json objectForKey:@"array"];
+    NSArray *arrayOfAnnouncementDictionaries = (NSArray *)[resources objectForKey:@"resources"];
     self.announcements = [NSMutableArray array];
     
     for(NSDictionary *d in arrayOfAnnouncementDictionaries) {    

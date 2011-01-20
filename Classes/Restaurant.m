@@ -26,6 +26,9 @@
 @dynamic name;
 @dynamic previewImageURL;
 
+#pragma mark -
+#pragma mark Helpers
+
 - (void)setWithJSONDictionary:(NSDictionary *)aDictionary {
   self.name = NilOrValue([aDictionary objectForKey:@"name"]);
   self.text = NilOrValue([aDictionary objectForKey:@"text"]);
@@ -40,10 +43,14 @@
   self.longitude = NilOrValue([location objectForKey:@"lng"]);
   
   NSDictionary *image = [aDictionary objectForKey:@"image"];
-  self.imageURL = NilOrValue([image objectForKey:@"url"]);
+  if ((NSNull *)image != [NSNull null]) {
+    self.imageURL = NilOrValue([image objectForKey:@"url"]);
+  }
   
   NSDictionary *previewImage = [aDictionary objectForKey:@"preview_image"];
-  self.previewImageURL = NilOrValue([previewImage objectForKey:@"url"]);
+  if ((NSNull *)previewImage != [NSNull null]) {
+    self.previewImageURL = NilOrValue([previewImage objectForKey:@"url"]);
+  }
   
   ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
   

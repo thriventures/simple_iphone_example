@@ -17,11 +17,7 @@
 }
 
 - (void)showAlertWithMessage:(NSString *)aMessage {
-  UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:nil
-                                                   message:aMessage
-                                                  delegate:nil 
-                                         cancelButtonTitle:nil 
-                                         otherButtonTitles:@"OK", nil] autorelease];
+  UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:nil message:aMessage delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
   [alert show];	
 }
 
