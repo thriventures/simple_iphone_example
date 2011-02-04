@@ -25,7 +25,7 @@
 #define kRestaurantText 0
 #define kRestaurantStars 1
 #define kRestaurantPriceRange 2
-#define kRestaurantOpeningTimes 3
+#define kRestaurantAddress 3
 #define kRestaurantLatitude 4
 #define kRestaurantLongitude 5
 
@@ -117,9 +117,9 @@
       cell.textLabel.text = @"Price Range";
       cell.detailTextLabel.text = [self.restaurant.priceRange stringValue];
     }
-    else if (indexPath.row == kRestaurantOpeningTimes) {
-      cell.textLabel.text = @"Opening Times";
-      cell.detailTextLabel.text = self.restaurant.openingTimes;
+    else if (indexPath.row == kRestaurantAddress) {
+      cell.textLabel.text = @"Address";
+      cell.detailTextLabel.text = self.restaurant.address;
     }
     else if (indexPath.row == kRestaurantLatitude) {
       cell.textLabel.text = @"Latitude";

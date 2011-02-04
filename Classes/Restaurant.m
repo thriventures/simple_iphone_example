@@ -13,7 +13,7 @@
 @implementation Restaurant 
 
 @dynamic updatedAt;
-@dynamic openingTimes;
+@dynamic address;
 @dynamic longitude;
 @dynamic latitude;
 @dynamic priceRange;
@@ -32,7 +32,7 @@
 - (void)setWithJSONDictionary:(NSDictionary *)aDictionary {
   self.name = NilOrValue([aDictionary objectForKey:@"name"]);
   self.text = NilOrValue([aDictionary objectForKey:@"text"]);
-  self.openingTimes = NilOrValue([aDictionary objectForKey:@"opening_times"]);
+  self.address = NilOrValue([aDictionary objectForKey:@"address"]);
   
   self.priceRange = NilOrValue([aDictionary objectForKey:@"price_range"]);
   self.stars = NilOrValue([aDictionary objectForKey:@"stars"]);

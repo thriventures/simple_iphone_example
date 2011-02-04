@@ -15,8 +15,6 @@ NSString * const StorageRoomAPIKey = @"DZHpRbsJ7VgFXhybKWmT";
 NSString * const StorageRoomHost = @"api.storageroomapp.com"; 
 
 // Uncomment for local testing
-//NSString * const StorageRoomAccountId = @"4cef9a8c425071fa6900002f";
-//NSString * const StorageRoomAPIKey = @"c499kx9L6aBfvJlvSKbF";
 //NSString * const StorageRoomHost = @"api.lvh.me:3000"; 
 
 NSString *StorageRoomURL(NSString *path) {
