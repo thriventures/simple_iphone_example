@@ -14,8 +14,6 @@ static SDWebImageManager *instance;
 
 @implementation SDWebImageManager
 
-@synthesize delegates;
-
 - (id)init
 {
     if ((self = [super init]))
@@ -58,7 +56,12 @@ static SDWebImageManager *instance;
 
 - (void)downloadWithURL:(NSURL *)url delegate:(id<SDWebImageManagerDelegate>)delegate
 {
-    if (!url || !delegate || [failedURLs containsObject:url])
+    [self downloadWithURL: url delegate:delegate retryFailed:NO];
+}
+
+- (void)downloadWithURL:(NSURL *)url delegate:(id<SDWebImageManagerDelegate>)delegate retryFailed:(BOOL)retryFailed
+{
+    if (!url || !delegate || (!retryFailed && [failedURLs containsObject:url]))
     {
         return;
     }
@@ -135,9 +138,19 @@ static SDWebImageManager *instance;
         {
             id<SDWebImageManagerDelegate> delegate = [delegates objectAtIndex:idx];
 
-            if (image && [delegate respondsToSelector:@selector(webImageManager:didFinishWithImage:)])
+            if (image)
             {
-                [delegate performSelector:@selector(webImageManager:didFinishWithImage:) withObject:self withObject:image];
+                if ([delegate respondsToSelector:@selector(webImageManager:didFinishWithImage:)])
+                {
+                    [delegate performSelector:@selector(webImageManager:didFinishWithImage:) withObject:self withObject:image];
+                }
+            }
+            else
+            {
+                if ([delegate respondsToSelector:@selector(webImageManager:didFailWithError:)])
+                {
+                    [delegate performSelector:@selector(webImageManager:didFailWithError:) withObject:self withObject:nil];
+                }
             }
 
             [downloaders removeObjectAtIndex:idx];
@@ -165,5 +178,31 @@ static SDWebImageManager *instance;
     [downloader release];
 }
 
+- (void)imageDownloader:(SDWebImageDownloader *)downloader didFailWithError:(NSError *)error;
+{
+    [downloader retain];
+
+    // Notify all the delegates with this downloader
+    for (NSInteger idx = [downloaders count] - 1; idx >= 0; idx--)
+    {
+        SDWebImageDownloader *aDownloader = [downloaders objectAtIndex:idx];
+        if (aDownloader == downloader)
+        {
+            id<SDWebImageManagerDelegate> delegate = [delegates objectAtIndex:idx];
+
+            if ([delegate respondsToSelector:@selector(webImageManager:didFailWithError:)])
+            {
+                [delegate performSelector:@selector(webImageManager:didFailWithError:) withObject:self withObject:error];
+            }
+
+            [downloaders removeObjectAtIndex:idx];
+            [delegates removeObjectAtIndex:idx];
+        }
+    }
+
+    // Release the downloader
+    [downloaderForURL removeObjectForKey:downloader.url];
+    [downloader release];
+}
 
 @end

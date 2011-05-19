@@ -53,8 +53,14 @@
   announcementFetcher.delegate = self;
   
   [announcementFetcher downloadAnnouncements];
-  
+    
   [self loadRestaurants];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+  
+  [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow  animated:YES];
 }
 
 - (void)viewDidUnload {    
