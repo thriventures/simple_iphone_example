@@ -54,7 +54,7 @@
     [connection release];
   }
   
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:StorageRoomURL(@"/collections/4d96091dba0561733300001b/entries?per_page=1&sort=created_at&order=desc")]];
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:StorageRoomURL(@"/collections/4d96091dba0561733300001b/entries?per_page=1&sort=@created_at&order=desc")]];
   NSMutableDictionary *headers = [NSMutableDictionary dictionary];
   [headers setObject:@"StorageRoomExample iPhone" forKey:@"User-Agent"];	
   [headers setObject:@"application/json" forKey:@"Accept"];
