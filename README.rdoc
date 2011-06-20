@@ -2,6 +2,12 @@
 
 This is an iPhone example on how to use the StorageRoom API (http://storageroomapp.com).
 
+== Screenshots
+
+[![](http://farm6.static.flickr.com/5222/5853375296_847cafb1d9.jpg)](http://farm6.static.flickr.com/5222/5853375296_847cafb1d9.jpg)
+[![](http://farm6.static.flickr.com/5185/5853368406_a49d81f84d.jpg)](http://farm6.static.flickr.com/5185/5853368406_a49d81f84d.jpg)
+[![](http://farm6.static.flickr.com/5228/5852815813_6f5e733f25.jpg)](http://farm6.static.flickr.com/5228/5852815813_6f5e733f25.jpg)
+
 
 == Basics
 
