@@ -16,7 +16,7 @@
 
 - (void)setWithJSONDictionary:(NSDictionary *)aDictionary {
   self.text = NilOrValue([aDictionary objectForKey:@"text"]);
-  self.url = NilOrValue([aDictionary objectForKey:@"url"]);
+  self.url = NilOrValue([aDictionary objectForKey:@"link"]);
     
   NSDictionary *image = [aDictionary objectForKey:@"image"];
   
