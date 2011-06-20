@@ -71,7 +71,7 @@
 		5328F5C4128BE0A3004B22B1 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
 		5328F5C5128BE0A3004B22B1 /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
 		5328F6CC128C2195004B22B1 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		5328F6CE128C219E004B22B1 /* README.rdoc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.rdoc; sourceTree = "<group>"; };
+		5328F6CE128C219E004B22B1 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
 		5328F6CF128C21E5004B22B1 /* History.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = History.txt; sourceTree = "<group>"; };
 		5328F7D9128C3215004B22B1 /* AnnouncementFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementFetcher.h; sourceTree = "<group>"; };
 		5328F7DA128C3215004B22B1 /* AnnouncementFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementFetcher.m; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 				5315BE8212884AA900C1D0EB /* Vendor */,
 				5315BDC612883BA300C1D0EB /* TODO */,
 				5328F6CC128C2195004B22B1 /* LICENSE */,
-				5328F6CE128C219E004B22B1 /* README.rdoc */,
+				5328F6CE128C219E004B22B1 /* README.mdown */,
 				5328F6CF128C21E5004B22B1 /* History.txt */,
 			);
 			name = StorageRoomExample;
