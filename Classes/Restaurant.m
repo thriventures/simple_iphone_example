@@ -44,12 +44,12 @@
   
   NSDictionary *image = [aDictionary objectForKey:@"image"];
   if ((NSNull *)image != [NSNull null]) {
-    self.imageURL = NilOrValue([image objectForKey:@"url"]);
+    self.imageURL = NilOrValue([image objectForKey:@"@url"]);
   }
   
   NSDictionary *previewImage = [aDictionary objectForKey:@"preview_image"];
   if ((NSNull *)previewImage != [NSNull null]) {
-    self.previewImageURL = NilOrValue([previewImage objectForKey:@"url"]);
+    self.previewImageURL = NilOrValue([previewImage objectForKey:@"@url"]);
   }
   
   ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
