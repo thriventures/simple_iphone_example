@@ -11,6 +11,11 @@ Screenshots
 [![](http://farm6.static.flickr.com/5228/5852815813_6f5e733f25.jpg)](http://farm6.static.flickr.com/5228/5852815813_6f5e733f25.jpg)
 
 
+StorageRoomKit
+--------------
+
+This example code on how to parse the JSON responses yourself. If you don't want to care about requests, responses and JSON parsing use our StorageRoomKit library (https://github.com/thriventures/StorageRoomKit).
+
 Basics
 ------
 
