@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/8/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import <MapKit/MapKit.h>
@@ -22,35 +22,23 @@ typedef enum {
 @class AnnouncementFetcher;
 
 @interface RestaurantsViewController : BaseController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, NSFetchedResultsControllerDelegate> {
-  RestaurantDetailViewController *detailViewController;
-  NSFetchedResultsController *fetchedResultsController;
-  
-  UITableView *tableView;
-  MKMapView *mapView;
-  MBProgressHUD *hudView;
-  UISegmentedControl *segmentedControl;
-  UIView *announcementView;
-  UIButton *announcementButton;
-  UILabel *announcementLabel;
-  
-  RestaurantFetcher *restaurantFetcher;
-  AnnouncementFetcher *announcementFetcher;
+
 }
 
-@property (nonatomic, retain) IBOutlet RestaurantDetailViewController *detailViewController;
-@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) IBOutlet RestaurantDetailViewController *detailViewController;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet MKMapView *mapView;
-@property (nonatomic, retain) MBProgressHUD *hudView;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
-@property (nonatomic, retain) IBOutlet UIView *announcementView;
-@property (nonatomic, retain) IBOutlet UIButton *announcementButton;
-@property (nonatomic, retain) IBOutlet UILabel *announcementLabel;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) IBOutlet MBProgressHUD *hudView;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) IBOutlet UIView *announcementView;
+@property (nonatomic, strong) IBOutlet UIButton *announcementButton;
+@property (nonatomic, strong) IBOutlet UILabel *announcementLabel;
 
 
-@property (nonatomic, retain) RestaurantFetcher *restaurantFetcher;
-@property (nonatomic, retain) AnnouncementFetcher *announcementFetcher;
+@property (nonatomic, strong) RestaurantFetcher *restaurantFetcher;
+@property (nonatomic, strong) AnnouncementFetcher *announcementFetcher;
 
 
 - (IBAction)segmentedControlChanged;

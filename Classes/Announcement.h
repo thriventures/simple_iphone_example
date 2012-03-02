@@ -3,25 +3,20 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/10/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 
 @interface Announcement : NSObject {
-  NSString * text;
-  NSString * url;
-  NSString * imageURL;
-  
-  NSDate * updatedAt;
-  NSDate * createdAt;
+
 }
 
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSString * url;
-@property (nonatomic, retain) NSString * imageURL;
+@property (nonatomic) NSString * text;
+@property (nonatomic) NSString * url;
+@property (nonatomic) NSString * imageURL;
 
-@property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSDate * createdAt;
+@property (nonatomic) NSDate * updatedAt;
+@property (nonatomic) NSDate * createdAt;
 
 
 - (void)setWithJSONDictionary:(NSDictionary *)aDictionary;

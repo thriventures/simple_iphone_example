@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/10/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "Announcement.h"
@@ -29,7 +29,6 @@
   self.createdAt = NilOrValue([formatter dateFromString:[aDictionary objectForKey:@"@created_at"]]);
   self.updatedAt = NilOrValue([formatter dateFromString:[aDictionary objectForKey:@"@updated_at"]]);
   
-  [formatter release];
 }
 
 @end

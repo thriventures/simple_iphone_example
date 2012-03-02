@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/11/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 extern NSString * const StorageRoomAccountId;

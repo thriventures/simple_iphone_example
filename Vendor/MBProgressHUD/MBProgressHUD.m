@@ -202,8 +202,8 @@
 	[self setNeedsDisplay];
 	
 	methodForExecution = method;	
-	targetForExecution = [target retain];
-	objectForExecution = [object retain];
+	targetForExecution = target;
+	objectForExecution = object;
 	useAnimation = animated;
 	
 	// Show HUD view
@@ -214,15 +214,18 @@
 }
 
 - (void)launchExecution {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
 	
 	// Start executing the requested task
-	[targetForExecution performSelector:methodForExecution withObject:objectForExecution];
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+		[targetForExecution performSelector:methodForExecution withObject:objectForExecution];
+    #pragma clang diagnostic pop
+
+		// Task completed, update view in main thread (note: view operations should be done only in the main thread)
+		[self performSelectorOnMainThread:@selector(cleanUp) withObject:nil waitUntilDone:NO];
 	
-	// Task completed, update view in main thread (note: view operations should be done only in the main thread)
-	[self performSelectorOnMainThread:@selector(cleanUp) withObject:nil waitUntilDone:NO];
-	
-	[pool release];
+	}
 }
 
 - (void)animationFinished:(NSString *)animationID finished:(BOOL)finished context:(void *)context {
@@ -239,8 +242,6 @@
 }
 
 - (void)cleanUp {
-	[targetForExecution release];
-	[objectForExecution release];
 	
 	[self hideUsingAnimation:useAnimation];
 }
@@ -315,14 +316,6 @@
 
 #pragma mark Tear down
 
-- (void)dealloc {
-	[indicator release];
-	[label release];
-	[detailsLabel release];
-	[labelText release];
-	[detailsLabelText release];
-  [super dealloc];
-}
 
 
 @end

@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/11/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "BaseController.h"
@@ -17,7 +17,7 @@
 }
 
 - (void)showAlertWithMessage:(NSString *)aMessage {
-  UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:nil message:aMessage delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] autorelease];
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:aMessage delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
   [alert show];	
 }
 

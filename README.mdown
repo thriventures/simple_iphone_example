@@ -47,4 +47,4 @@ http://github.com/thriventures/storage_room_iphone_examples/issues
 License
 -------
 
-MIT License. Copyright 2010 Thriventures UG (haftungsbeschränkt) - http://www.thriventures.com
+MIT License. Copyright 2012 Thriventures UG (haftungsbeschränkt) - http://www.thriventures.com

@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/10/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import <CoreData/CoreData.h>
@@ -13,19 +13,19 @@
   
 }
 
-@property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSString * address;
-@property (nonatomic, retain) NSNumber * longitude;
-@property (nonatomic, retain) NSNumber * latitude;
-@property (nonatomic, retain) NSNumber * priceRange;
-@property (nonatomic, retain) NSNumber * vegetarianMenu;
-@property (nonatomic, retain) NSDate * lastVisit;
-@property (nonatomic, retain) NSNumber * stars;
-@property (nonatomic, retain) NSString * imageURL;
-@property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSDate * createdAt;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * previewImageURL;
+@property (nonatomic) NSDate * updatedAt;
+@property (nonatomic) NSString * address;
+@property (nonatomic) NSNumber * longitude;
+@property (nonatomic) NSNumber * latitude;
+@property (nonatomic) NSNumber * priceRange;
+@property (nonatomic) NSNumber * vegetarianMenu;
+@property (nonatomic) NSDate * lastVisit;
+@property (nonatomic) NSNumber * stars;
+@property (nonatomic) NSString * imageURL;
+@property (nonatomic) NSString * text;
+@property (nonatomic) NSDate * createdAt;
+@property (nonatomic) NSString * name;
+@property (nonatomic) NSString * previewImageURL;
 
 - (void)setWithJSONDictionary:(NSDictionary *)aDictionary;
 - (CLLocationCoordinate2D)coordinate;

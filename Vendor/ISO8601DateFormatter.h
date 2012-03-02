@@ -43,7 +43,7 @@ extern unichar ISO8601DefaultTimeSeparatorCharacter;
 	BOOL parsesStrictly;
 }
 
-@property(retain) NSTimeZone *defaultTimeZone;
+@property NSTimeZone *defaultTimeZone;
 
 #pragma mark Parsing
 

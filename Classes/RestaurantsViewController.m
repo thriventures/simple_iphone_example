@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/8/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "RestaurantsViewController.h"
@@ -34,7 +34,6 @@
 - (void)dealloc {
   [self viewDidUnload];
   
-  [super dealloc];
 }
 
 #pragma mark -
@@ -43,13 +42,13 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  self.hudView = [[[MBProgressHUD alloc] initWithWindow:[UIApplication sharedApplication].keyWindow] autorelease];
+  self.hudView = [[MBProgressHUD alloc] initWithWindow:[UIApplication sharedApplication].keyWindow];
   [[self applicationDelegate].window addSubview:self.hudView];
   
-  self.restaurantFetcher = [[[RestaurantFetcher alloc] initWithManagedObjectContext:[self applicationDelegate].managedObjectContext] autorelease];
+  self.restaurantFetcher = [[RestaurantFetcher alloc] initWithManagedObjectContext:[self applicationDelegate].managedObjectContext];
   restaurantFetcher.delegate = self;
   
-  self.announcementFetcher = [[[AnnouncementFetcher alloc] init] autorelease];
+  self.announcementFetcher = [[AnnouncementFetcher alloc] init];
   announcementFetcher.delegate = self;
   
   [announcementFetcher downloadAnnouncements];
@@ -86,14 +85,14 @@
 
 - (void)loadRestaurants {  
   NSManagedObjectContext *context = [self applicationDelegate].managedObjectContext;
-  NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+  NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
   fetchRequest.entity = [NSEntityDescription entityForName:@"Restaurant" inManagedObjectContext:context];
   
-  NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
-  fetchRequest.sortDescriptors = [[[NSArray alloc] initWithObjects:sortDescriptor, nil] autorelease];
+  NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+  fetchRequest.sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
   
   [NSFetchedResultsController deleteCacheWithName:@"restaurants"];
-  self.fetchedResultsController = [[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:@"restaurants"] autorelease];  
+  self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:@"restaurants"];  
   fetchedResultsController.delegate = self;
   
   NSError *error = nil;
@@ -170,7 +169,7 @@
   UITableViewCell *cell = (UITableViewCell *)[aTableView dequeueReusableCellWithIdentifier:plainCellIdentifier];
   
   if (!cell) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:plainCellIdentifier] autorelease]; 
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:plainCellIdentifier]; 
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
   }
@@ -220,7 +219,7 @@
 		MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:annotationViewIdentifier];
 		
 		if(!annotationView) {
-			annotationView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationViewIdentifier] autorelease];
+			annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationViewIdentifier];
       annotationView.canShowCallout = YES;
       
       UIButton *detailsButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];

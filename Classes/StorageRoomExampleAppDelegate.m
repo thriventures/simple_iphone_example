@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/8/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "StorageRoomExampleAppDelegate.h"
@@ -14,20 +14,6 @@
 @synthesize window;
 @synthesize tabBarController;
 @synthesize managedObjectModel, managedObjectContext, persistentStoreCoordinator;
-
-#pragma mark -
-#pragma mark NSObject
-
-- (void)dealloc {
-  self.tabBarController = nil;
-  self.window = nil;
-
-  [managedObjectContext release];
-  [managedObjectModel release];
-  [persistentStoreCoordinator release];
-  
-  [super dealloc];
-}
 
 #pragma mark -
 #pragma mark Helper Methods
@@ -54,7 +40,7 @@
 
 - (NSManagedObjectModel *)managedObjectModel {
   if (!managedObjectModel) {
-    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
+    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];    
   }
   
   return managedObjectModel;
@@ -85,11 +71,7 @@
 #pragma mark -
 #pragma mark UIApplication Delegate Methods
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-  managedObjectModel = nil;
-  managedObjectContext = nil;
-  persistentStoreCoordinator = nil;
-  
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {      
   [window addSubview:tabBarController.view];
   [window makeKeyAndVisible];
 

@@ -54,12 +54,12 @@
 	UILabel *label;
 	UILabel *detailsLabel;
 	
-	id delegate;
+	id __unsafe_unretained delegate;
 	NSString *labelText;
 	NSString *detailsLabelText;
 	float opacity;
-	UIFont *labelFont;
-	UIFont *detailsLabelFont;
+	UIFont *__weak labelFont;
+	UIFont *__weak detailsLabelFont;
 }
 
 /**
@@ -72,7 +72,7 @@
  * The HUD delegate object. If set the delegate will receive hudWasHidden callbacks when the hud was hidden.  
  * The delegate should conform to the MBProgressHUDDelegate protocol and implement the hudWasHidden method. 
  */
-@property (assign) id delegate;
+@property (unsafe_unretained) id delegate;
 
 /**
  * An optional short message to be displayed below the activity indicator. 
@@ -97,13 +97,13 @@
  * Font to be used for the main label.
  * Set this property if the default is not adequate. 
  */
-@property (assign) UIFont *labelFont;
+@property (weak) UIFont *labelFont;
 
 /**
  * Font to be used for the details label.
  * Set this property if the default is not adequate. 
  */
-@property (assign) UIFont *detailsLabelFont;
+@property (weak) UIFont *detailsLabelFont;
 
 /**
  * Shows the HUD while a background task is executing in a new thread, then hides the HUD.

@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/10/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 
@@ -11,14 +11,11 @@
 @interface RestaurantFetcher : NSObject {
   NSURLConnection *connection;
   NSMutableData *responseData;
-  
-  NSManagedObjectContext *managedObjectContext;
-  
-  id delegate;
+
 }
 
-@property (nonatomic, assign) id delegate;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, weak) id delegate;
+@property (nonatomic) NSManagedObjectContext *managedObjectContext;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)aManagedObjectContext;
 

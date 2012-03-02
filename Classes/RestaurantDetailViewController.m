@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/8/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "RestaurantDetailViewController.h"
@@ -52,7 +52,6 @@
 - (void)dealloc {
   [self viewDidUnload];
   
-  [super dealloc];
 }
 
 #pragma mark -
@@ -96,14 +95,14 @@
   
   
   if (indexPath.section == kSegmentTitle) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease]; 
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil]; 
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
     cell.textLabel.text = [self.restaurant name];
       
     [cell.imageView setImageWithURL:[NSURL URLWithString:[self.restaurant imageURL]] placeholderImage:nil];
   }
   else if (indexPath.section == kSegmentBasic) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease]; 
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil]; 
     
     if (indexPath.row == kRestaurantText) {
       cell.textLabel.text = @"Text";
@@ -131,7 +130,7 @@
     }
   }
   else if (indexPath.section == kSegmentDetail) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil] autorelease]; 
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil]; 
     
     if (indexPath.row == kRestaurantVegetarianMenu) {
       cell.textLabel.text = @"Vegetarian";

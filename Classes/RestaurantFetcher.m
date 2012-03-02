@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/10/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "RestaurantFetcher.h"
@@ -36,25 +36,17 @@
   delegate = nil;
   
   [connection cancel];
-  [connection release];
   
-  [responseData release];
   
-  self.managedObjectContext = nil;
   
-	[super dealloc];
 }
 
 #pragma mark -
 #pragma mark Helpers
 
 - (void)downloadRestaurants {
-  if (responseData) {
-    [responseData release];
-  }
   if (connection) {
     [connection cancel];
-    [connection release];
   }
   
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:StorageRoomURL(@"/collections/4d960916ba05617333000005/entries?per_page=100")]];
@@ -74,7 +66,7 @@
 }
 
 - (void)removeAllRestaurantsFromManagedObjectContext {
-  NSFetchRequest *fetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+  NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	fetchRequest.entity = [NSEntityDescription entityForName:@"Restaurant" inManagedObjectContext:managedObjectContext];
 	
 	NSArray *results = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
@@ -140,7 +132,7 @@
     } 
   }
   @finally {
-    [content release];
+    content = nil;
   }
 }
 

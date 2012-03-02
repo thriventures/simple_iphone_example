@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/10/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import "Restaurant.h"
@@ -59,7 +59,6 @@
   self.createdAt = [formatter dateFromString:[aDictionary objectForKey:@"@created_at"]];
   self.updatedAt = [formatter dateFromString:[aDictionary objectForKey:@"@updated_at"]];
   
-  [formatter release];
 }
 
 #pragma mark -

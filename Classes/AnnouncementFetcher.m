@@ -32,13 +32,9 @@
   delegate = nil;
   
   [connection cancel];
-  [connection release];
   
-  [responseData release];
   
-  self.announcements = nil;
     
-	[super dealloc];
 }
 
 #pragma mark -
@@ -46,12 +42,8 @@
 
 
 - (void)downloadAnnouncements {
-  if (responseData) {
-    [responseData release];
-  }
   if (connection) {
     [connection cancel];
-    [connection release];
   }
   
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:StorageRoomURL(@"/collections/4d96091dba0561733300001b/entries?per_page=1&sort=@created_at&order=desc")]];
@@ -104,7 +96,6 @@
       Announcement *announcement = [[Announcement alloc] init];
       [announcement setWithJSONDictionary:d];
       [announcements addObject:announcement];
-      [announcement release];
     }
         
     if ([delegate respondsToSelector:@selector(announcementFetcherDidFinishDownload:withAnnouncements:)]) {
@@ -120,7 +111,7 @@
     } 
   }
   @finally {
-    [content release];
+    content = nil;
   }
 }
 

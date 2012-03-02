@@ -3,23 +3,20 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/8/10.
-//  Copyright 2010 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
+//  Copyright 2012 Thriventures UG (haftungsbeschränkt). See LICENSE for details.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface StorageRoomExampleAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 
-  NSManagedObjectModel *managedObjectModel;
-  NSManagedObjectContext *managedObjectContext;
-  NSPersistentStoreCoordinator *persistentStoreCoordinator;
 }
 
-@property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
-@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic) IBOutlet UIWindow *window;
+@property (nonatomic) IBOutlet UITabBarController *tabBarController;
 
 - (NSString *)applicationDocumentsDirectory;
 
