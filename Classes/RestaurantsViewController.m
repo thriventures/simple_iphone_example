@@ -54,6 +54,7 @@
   [announcementFetcher downloadAnnouncements];
     
   [self loadRestaurants];
+  [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -177,7 +178,7 @@
   Restaurant *restaurant = (Restaurant *)[self.fetchedResultsController objectAtIndexPath:indexPath];
   
   cell.textLabel.text = restaurant.name;
-  [cell.imageView setImageWithURL:[NSURL URLWithString:[restaurant previewImageURL]] placeholderImage:nil];
+  [cell.imageView setImageWithURL:[NSURL URLWithString:[restaurant previewImageURL]] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
   
   return cell;
 }

@@ -39,6 +39,7 @@
 		53CED334128AAC1400AA5401 /* Announcement.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CED333128AAC1400AA5401 /* Announcement.m */; };
 		53CED3B0128AB69800AA5401 /* RestaurantFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CED3AF128AB69800AA5401 /* RestaurantFetcher.m */; };
 		53CED3E2128AB7F600AA5401 /* libYAJLIPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53CED3D9128AB7F600AA5401 /* libYAJLIPhone.a */; };
+		53E9918B1501205A004FB22D /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E9918A1501205A004FB22D /* placeholder.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		53CED3DF128AB7F600AA5401 /* YAJLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLDocument.h; sourceTree = "<group>"; };
 		53CED3E0128AB7F600AA5401 /* YAJLGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLGen.h; sourceTree = "<group>"; };
 		53CED3E1128AB7F600AA5401 /* YAJLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLParser.h; sourceTree = "<group>"; };
+		53E9918A1501205A004FB22D /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* StorageRoomExample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StorageRoomExample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +180,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				53E9918A1501205A004FB22D /* placeholder.png */,
 				53CED309128AA98F00AA5401 /* Interfaces */,
 				8D1107310486CEB800E47090 /* StorageRoomExample-Info.plist */,
 				53CED30A128AA9EB00AA5401 /* Base.xcdatamodel */,
@@ -361,6 +364,7 @@
 				5328F6D0128C21E5004B22B1 /* History.txt in Resources */,
 				5393E9A8135A2DCB007033AB /* LICENSE in Resources */,
 				5393E9A9135A2DCB007033AB /* README.md in Resources */,
+				53E9918B1501205A004FB22D /* placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

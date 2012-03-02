@@ -99,7 +99,7 @@
     cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
     cell.textLabel.text = [self.restaurant name];
       
-    [cell.imageView setImageWithURL:[NSURL URLWithString:[self.restaurant imageURL]] placeholderImage:nil];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:[self.restaurant imageURL]] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
   }
   else if (indexPath.section == kSegmentBasic) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:nil]; 
