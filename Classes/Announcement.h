@@ -11,12 +11,12 @@
 
 }
 
-@property (nonatomic) NSString * text;
-@property (nonatomic) NSString * url;
-@property (nonatomic) NSString * imageURL;
+@property (nonatomic, strong) NSString * text;
+@property (nonatomic, strong) NSString * url;
+@property (nonatomic, strong) NSString * imageURL;
 
-@property (nonatomic) NSDate * updatedAt;
-@property (nonatomic) NSDate * createdAt;
+@property (nonatomic, strong) NSDate * updatedAt;
+@property (nonatomic, strong) NSDate * createdAt;
 
 
 - (void)setWithJSONDictionary:(NSDictionary *)aDictionary;

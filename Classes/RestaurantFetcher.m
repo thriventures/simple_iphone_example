@@ -12,20 +12,24 @@
 #import "NSObject+YAJL.h"
 
 
+@interface RestaurantFetcher ()
+
+@property (nonatomic, strong) NSURLConnection *connection;
+@property (nonatomic, strong) NSMutableData *responseData;
+
+@end
+
 @implementation RestaurantFetcher
 
 @synthesize managedObjectContext;
 @synthesize delegate;
+@synthesize connection, responseData;
 
 #pragma mark -
 #pragma mark NSObject
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)aManagedObjectContext {
-  if (self = [super init]) {
-    connection = nil;
-    responseData = nil;
-    delegate = nil;
-    
+  if (self = [super init]) {    
     self.managedObjectContext = aManagedObjectContext;
   }
   
@@ -33,20 +37,18 @@
 }
 
 - (void)dealloc {
-  delegate = nil;
+  self.delegate = nil;
   
-  [connection cancel];
-  
-  
-  
+  [self.connection cancel];
+
 }
 
 #pragma mark -
 #pragma mark Helpers
 
 - (void)downloadRestaurants {
-  if (connection) {
-    [connection cancel];
+  if (self.connection) {
+    [self.connection cancel];
   }
   
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:StorageRoomURL(@"/collections/4d960916ba05617333000005/entries?per_page=100")]];
@@ -57,8 +59,8 @@
   
   [request setAllHTTPHeaderFields:headers];
   
-  responseData = [[NSMutableData alloc] init];
-  connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+  self.responseData = [[NSMutableData alloc] init];
+  self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
   
   if ([delegate respondsToSelector:@selector(restaurantFetcherDidStartDownload:)]) {
     [delegate performSelector:@selector(restaurantFetcherDidStartDownload:) withObject:self];
@@ -82,11 +84,11 @@
 #pragma mark NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)response {
-  [responseData setLength:0];
+  [self.responseData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveData:(NSData *)data {
-  [responseData appendData:data];
+  [self.responseData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)aConnection didFailWithError:(NSError *)error {
@@ -100,7 +102,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)aConnection {
   NSLog(@"Downloading restaurants successful");
   
-  NSString *content = [[NSString alloc]  initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
+  NSString *content = [[NSString alloc]  initWithBytes:[self.responseData bytes] length:[self.responseData length] encoding:NSUTF8StringEncoding];
   
   @try {
     NSDictionary *json = [content yajl_JSON];

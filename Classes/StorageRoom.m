@@ -19,8 +19,6 @@ NSString *StorageRoomURL(NSString *path) {
   return [NSString stringWithFormat:@"http://%@/accounts/%@%@", StorageRoomHost, StorageRoomAccountId, path];
 }
 
-
-
 id NilOrValue(id aValue) {
   if ((NSNull *)aValue == [NSNull null]) {
     return nil;

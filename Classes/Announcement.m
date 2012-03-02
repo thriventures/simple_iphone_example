@@ -16,7 +16,7 @@
 
 - (void)setWithJSONDictionary:(NSDictionary *)aDictionary {
   self.text = NilOrValue([aDictionary objectForKey:@"text"]);
-  self.url = NilOrValue([aDictionary objectForKey:@"link"]);
+  self.url  = NilOrValue([aDictionary objectForKey:@"link"]);
     
   NSDictionary *image = [aDictionary objectForKey:@"image"];
   
@@ -28,7 +28,6 @@
   
   self.createdAt = NilOrValue([formatter dateFromString:[aDictionary objectForKey:@"@created_at"]]);
   self.updatedAt = NilOrValue([formatter dateFromString:[aDictionary objectForKey:@"@updated_at"]]);
-  
 }
 
 @end

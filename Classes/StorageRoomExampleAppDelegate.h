@@ -15,8 +15,8 @@
 @property (nonatomic, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (nonatomic) IBOutlet UIWindow *window;
-@property (nonatomic) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet UITabBarController *tabBarController;
 
 - (NSString *)applicationDocumentsDirectory;
 

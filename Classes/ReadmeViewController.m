@@ -8,8 +8,8 @@
 
 #import "ReadmeViewController.h"
 
-#define kAboutURLRaw @"https://github.com/thriventures/storage_room_iphone_examples/raw/master/README.rdoc"
-#define kAboutURLHTML @"https://github.com/thriventures/storage_room_iphone_examples"
+#define kAboutURLRaw @"https://raw.github.com/thriventures/simple_iphone_example/master/README.mdown"
+#define kAboutURLHTML @"https://github.com/thriventures/simple_iphone_example"
 
 @implementation ReadmeViewController
 

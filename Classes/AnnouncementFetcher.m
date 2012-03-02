@@ -3,7 +3,7 @@
 //  StorageRoomExample
 //
 //  Created by Sascha Konietzke on 11/11/10.
-//  Copyright 2010 __MyCompanyName__. See LICENSE for details.
+//  Copyright 2012 Thriventures UG. See LICENSE for details.
 //
 
 #import "AnnouncementFetcher.h"
@@ -11,30 +11,24 @@
 #import "Announcement.h"
 #import "NSObject+YAJL.h"
 
+@interface AnnouncementFetcher ()
+
+@property (nonatomic, strong) NSURLConnection *connection;
+@property (nonatomic, strong) NSMutableData *responseData;
+
+@end
+
 @implementation AnnouncementFetcher
 
 @synthesize delegate, announcements;
+@synthesize connection, responseData;
 
 #pragma mark -
 #pragma mark NSObject
 
-- (id)init {
-  if ((self = [super init])) {
-    connection = nil;
-    responseData = nil;
-    delegate = nil;    
-  }
-  
-  return self;
-}
 
-- (void)dealloc {
-  delegate = nil;
-  
-  [connection cancel];
-  
-  
-    
+- (void)dealloc {  
+  [self.connection cancel];
 }
 
 #pragma mark -
@@ -42,8 +36,8 @@
 
 
 - (void)downloadAnnouncements {
-  if (connection) {
-    [connection cancel];
+  if (self.connection) {
+    [self.connection cancel];
   }
   
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:StorageRoomURL(@"/collections/4d96091dba0561733300001b/entries?per_page=1&sort=@created_at&order=desc")]];
@@ -54,8 +48,8 @@
   
   [request setAllHTTPHeaderFields:headers];
   
-  responseData = [[NSMutableData alloc] init];
-  connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+  self.responseData = [[NSMutableData alloc] init];
+  self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
   
   if ([delegate respondsToSelector:@selector(announcementFetcherDidStartDownload:)]) {
     [delegate performSelector:@selector(announcementFetcherDidStartDownload:) withObject:self];
@@ -66,11 +60,11 @@
 #pragma mark NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)response {
-  [responseData setLength:0];
+  [self.responseData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)aConnection didReceiveData:(NSData *)data {
-  [responseData appendData:data];
+  [self.responseData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)aConnection didFailWithError:(NSError *)error {
@@ -84,7 +78,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)aConnection {
   NSLog(@"Downloading announcements successful");
   
-  NSString *content = [[NSString alloc]  initWithBytes:[responseData bytes] length:[responseData length] encoding:NSUTF8StringEncoding];
+  NSString *content = [[NSString alloc]  initWithBytes:[self.responseData bytes] length:[self.responseData length] encoding:NSUTF8StringEncoding];
   
   @try {
     NSDictionary *json = [content yajl_JSON];

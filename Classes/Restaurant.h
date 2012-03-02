@@ -13,19 +13,19 @@
   
 }
 
-@property (nonatomic) NSDate * updatedAt;
-@property (nonatomic) NSString * address;
-@property (nonatomic) NSNumber * longitude;
-@property (nonatomic) NSNumber * latitude;
-@property (nonatomic) NSNumber * priceRange;
-@property (nonatomic) NSNumber * vegetarianMenu;
-@property (nonatomic) NSDate * lastVisit;
-@property (nonatomic) NSNumber * stars;
-@property (nonatomic) NSString * imageURL;
-@property (nonatomic) NSString * text;
-@property (nonatomic) NSDate * createdAt;
-@property (nonatomic) NSString * name;
-@property (nonatomic) NSString * previewImageURL;
+@property (nonatomic, strong) NSDate * updatedAt;
+@property (nonatomic, strong) NSString * address;
+@property (nonatomic, strong) NSNumber * longitude;
+@property (nonatomic, strong) NSNumber * latitude;
+@property (nonatomic, strong) NSNumber * priceRange;
+@property (nonatomic, strong) NSNumber * vegetarianMenu;
+@property (nonatomic, strong) NSDate * lastVisit;
+@property (nonatomic, strong) NSNumber * stars;
+@property (nonatomic, strong) NSString * imageURL;
+@property (nonatomic, strong) NSString * text;
+@property (nonatomic, strong) NSDate * createdAt;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * previewImageURL;
 
 - (void)setWithJSONDictionary:(NSDictionary *)aDictionary;
 - (CLLocationCoordinate2D)coordinate;

@@ -152,10 +152,8 @@
   
   cell.accessoryType = UITableViewCellAccessoryNone;
   
-  
   return cell;
 }
-
 
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -9,12 +9,10 @@
 
 
 @interface AnnouncementFetcher : NSObject {
-  NSURLConnection *connection;
-  NSMutableData *responseData;
 
 }
 
-@property (nonatomic) NSMutableArray *announcements;
+@property (nonatomic, strong) NSMutableArray *announcements;
 
 @property (nonatomic, weak) id delegate;
 

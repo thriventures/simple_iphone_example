@@ -7,15 +7,12 @@
 //
 
 
-
 @interface RestaurantFetcher : NSObject {
-  NSURLConnection *connection;
-  NSMutableData *responseData;
 
 }
 
 @property (nonatomic, weak) id delegate;
-@property (nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)aManagedObjectContext;
 

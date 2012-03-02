@@ -14,8 +14,8 @@
 
 }
 
-@property (nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
-@property (nonatomic) Restaurant *restaurant;
+@property (nonatomic, strong) Restaurant *restaurant;
 
 @end
